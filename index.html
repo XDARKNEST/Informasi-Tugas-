@@ -5,273 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Drawing Art Informasi Tugas</title>
 
-<style>
-:root{
-  --primary:#4f46e5;
-  --secondary:#6366f1;
-  --bg:#f5f7fb;
-  --card:#ffffff;
-  --text:#1f2937;
-  --muted:#6b7280;
-  --radius:16px;
-  --shadow:0 12px 30px rgba(0,0,0,.08);
-}
-
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  font-family:Segoe UI,system-ui,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  transition:.3s ease;
-}
-
-/* ================= HEADER ================= */
-header{
-  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-  color:#fff;
-  padding:70px 20px 50px;
-  text-align:center;
-  position:relative;
-  animation:fadeDown .9s ease;
-}
-
-header h1{font-size:2.6rem;margin-bottom:10px}
-header p{opacity:.95;margin-bottom:15px}
-
-.dark-toggle{
-  position:absolute;
-  top:20px;
-  right:20px;
-  background:rgba(255,255,255,.15);
-  color:#fff;
-  border:none;
-  padding:10px 16px;
-  border-radius:999px;
-  cursor:pointer;
-  font-weight:600;
-}
-
-.countdown{
-  display:inline-block;
-  background:rgba(0,0,0,.35);
-  padding:14px 22px;
-  border-radius:14px;
-  font-weight:600;
-  margin-bottom:25px;
-  animation:pulse 2.5s infinite;
-}
-
-.ref-preview{
-  display:flex;
-  justify-content:center;
-}
-
-.ref-preview img{
-  width:420px;
-  max-width:100%;
-  border-radius:18px;
-  user-select:none;
-  -webkit-user-drag:none;
-}
-
-/* ================= CONTENT ================= */
-.container{
-  max-width:1200px;
-  margin:20px auto 60px;
-  padding:0 20px;
-  display:grid;
-  gap:30px;
-}
-
-.card{
-  background:var(--card);
-  border-radius:var(--radius);
-  padding:28px;
-  box-shadow:var(--shadow);
-  animation:fadeUp .8s ease both;
-}
-
-.card:nth-child(1){animation-delay:.2s}
-.card:nth-child(2){animation-delay:.4s}
-
-.card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 18px 40px rgba(0,0,0,.15);
-  transition:.35s ease;
-}
-
-.info-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:18px;
-}
-
-.info-item{
-  background:#f9fafb;
-  padding:16px;
-  border-radius:12px;
-  border-left:4px solid var(--primary);
-}
-
-/* ================= WINNERS ================= */
-.winners{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:24px;
-}
-
-.winner{
-  background:#f9fafb;
-  border-radius:18px;
-  overflow:hidden;
-}
-
-.winner img{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-  transition:.5s ease;
-  user-select:none;
-  -webkit-user-drag:none;
-}
-
-.winner:hover img{
-  transform:scale(1.08);
-}
-
-.winner-body{
-  padding:18px;
-  text-align:center;
-}
-
-.fullview-btn{
-  margin-top:12px;
-  padding:10px 18px;
-  border:none;
-  border-radius:999px;
-  background:var(--primary);
-  color:#fff;
-  font-weight:600;
-  cursor:pointer;
-  transition:.3s ease;
-}
-
-.fullview-btn:hover{
-  transform:scale(1.08);
-  box-shadow:0 10px 25px rgba(79,70,229,.45);
-}
-
-.badge{
-  display:inline-block;
-  margin-top:10px;
-  padding:6px 14px;
-  border-radius:20px;
-  color:#fff;
-  font-size:.85rem;
-  font-weight:600;
-}
-
-.gold{background:#facc15;color:#1f2937}
-.silver{background:#9ca3af}
-.bronze{background:#d97706}
-
-/* ================= FOOTER ================= */
-.social-section{
-  margin-top:20px;
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:14px;
-}
-
-.social-btn{
-  padding:12px 22px;
-  border-radius:999px;
-  color:#fff;
-  text-decoration:none;
-  font-weight:600;
-  box-shadow:var(--shadow);
-  transition:.3s ease;
-}
-
-.social-btn:hover{
-  transform:translateY(-4px) scale(1.05);
-}
-
-.instagram{background:#e1306c}
-.tiktok{background:#000}
-.task{background:#16a34a}
-.community{background:#2563eb}
-
-footer{
-  text-align:center;
-  padding:40px 20px;
-  color:#6b7280;
-}
-
-/* ================= MODAL ================= */
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.9);
-  align-items:center;
-  justify-content:center;
-  z-index:999;
-}
-
-.modal img{
-  max-width:90%;
-  max-height:90%;
-  border-radius:18px;
-  animation:scaleIn .35s ease;
-}
-
-.close{
-  position:absolute;
-  top:30px;
-  right:40px;
-  font-size:40px;
-  color:#fff;
-  cursor:pointer;
-}
-
-/* ================= DARK MODE ================= */
-body.dark{
-  --bg:#0b0b12;
-  --card:#141422;
-  --text:#e5e7eb;
-  --muted:#9ca3af;
-}
-
-/* ================= ANIMATIONS ================= */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(30px)}
-  to{opacity:1;transform:translateY(0)}
-}
-@keyframes fadeDown{
-  from{opacity:0;transform:translateY(-30px)}
-  to{opacity:1;transform:translateY(0)}
-}
-@keyframes scaleIn{
-  from{opacity:0;transform:scale(.85)}
-  to{opacity:1;transform:scale(1)}
-}
-@keyframes pulse{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.05)}
-  100%{transform:scale(1)}
-}
-
-@media (max-width:768px){
-  header h1{font-size:2rem}
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+<canvas id="particleCanvas"></canvas>
 
 <header>
 <button class="dark-toggle" id="darkToggle">Dark Mode</button>
@@ -279,6 +18,7 @@ body.dark{
 <p>Portal resmi informasi tugas dan hasil karya terbaik</p>
 
 <div class="countdown" id="countdown">⏳ Loading deadline...</div>
+<div class="countdown" id="nextCountdown">📅 Loading tugas selanjutnya...</div>
 
 <div class="ref-preview">
 <img src="https://i.ibb.co.com/chZz6NQw/de6990746352b65ab6213ee2deeb6a47.gif">
@@ -290,8 +30,8 @@ body.dark{
 <section class="card">
 <h2>Informasi Tugas</h2>
 <div class="info-grid">
-<div class="info-item"><strong>Tugas:</strong> Gambar Karakter Waifu Atau Husbu Kesukaan Kalian Sendiri</div>
-<div class="info-item"><strong>Tema:</strong> Waifu/Husbu</div>
+<div class="info-item"><strong>Tugas:</strong> Gambar Karakter Waifu / Husbu</div>
+<div class="info-item"><strong>Tema:</strong> Waifu / Husbu</div>
 <div class="info-item"><strong>Teknik:</strong> Tradi / Digital</div>
 <div class="info-item"><strong>Format:</strong> COLORING / BNW</div>
 <div class="info-item"><strong>Pengumpulan:</strong> Grup Kumpul Tugas</div>
@@ -332,16 +72,43 @@ body.dark{
 </div>
 </section>
 
+<section class="card">
+<h2>Juara Digital Terbaik Minggu Ini</h2>
+<div class="winners">
+
+<div class="winner">
+<img src="https://i.ibb.co.com/MkYzwLLc/IMG-20260104-113117.jpg">
+<div class="winner-body">
+<h3>Juara 1 Digital</h3>
+<span class="badge gold">Juara 1 Digital</span><br>
+<button class="fullview-btn" data-img="https://i.ibb.co.com/MkYzwLLc/IMG-20260104-113117.jpg">Full View</button>
+</div>
+</div>
+
+<div class="winner">
+<img src="https://i.ibb.co.com/5W5f57Ls/IMG-20260104-113052.jpg">
+<div class="winner-body">
+<h3>Juara 2 Digital</h3>
+<span class="badge silver">Juara 2 Digital</span><br>
+<button class="fullview-btn" data-img="https://i.ibb.co.com/5W5f57Ls/IMG-20260104-113052.jpg">Full View</button>
+</div>
+</div>
+
+<div class="winner">
+<img src="https://i.ibb.co.com/VpY9hYTM/IMG-20260104-113132.jpg">
+<div class="winner-body">
+<h3>Juara 3 Digital</h3>
+<span class="badge bronze">Juara 3 Digital</span><br>
+<button class="fullview-btn" data-img="https://i.ibb.co.com/VpY9hYTM/IMG-20260104-113132.jpg">Full View</button>
+</div>
+</div>
+
+</div>
+</section>
+
 </main>
 
 <footer>
-<div class="social-section">
-<a href="https://www.instagram.com/restu_xyo?igsh=dGtuY2o2dzljN2Ru" class="social-btn instagram">Instagram</a>
-<a href="https://www.tiktok.com/@lenz_z?_r=1&_t=ZS-92ZVc4MYuI6" class="social-btn tiktok">TikTok</a>
-<a href="https://chat.whatsapp.com/JNfiv6pCjBX3A380Y9ckot" class="social-btn task">Grup Kumpul Tugas</a>
-<a href="https://chat.whatsapp.com/EpwPHZfdHlsDTZ9p01U8oy" class="social-btn community">Grup Community</a>
-</div>
-<br>
 © 2025 Drawing Assignment Portal
 </footer>
 
@@ -350,42 +117,6 @@ body.dark{
 <img id="modalImg">
 </div>
 
-<script>
-/* DARK MODE */
-const darkToggle=document.getElementById("darkToggle");
-if(localStorage.getItem("theme")==="dark"){
-  document.body.classList.add("dark");
-  darkToggle.textContent="Light Mode";
-}
-darkToggle.onclick=()=>{
-  document.body.classList.toggle("dark");
-  localStorage.setItem("theme",document.body.classList.contains("dark")?"dark":"light");
-  darkToggle.textContent=document.body.classList.contains("dark")?"Light Mode":"Dark Mode";
-};
-
-/* FULL VIEW */
-document.querySelectorAll(".fullview-btn").forEach(btn=>{
-  btn.onclick=()=>{
-    imageModal.style.display="flex";
-    modalImg.src=btn.dataset.img;
-  }
-});
-closeModal.onclick=()=>imageModal.style.display="none";
-imageModal.onclick=e=>{if(e.target===imageModal)imageModal.style.display="none"}
-
-/* COUNTDOWN */
-const deadline=new Date("2026-01-04 00:00:00").getTime();
-const cd=document.getElementById("countdown");
-setInterval(()=>{
-  const diff=deadline-new Date().getTime();
-  if(diff<=0){cd.innerHTML="⛔ Deadline Tugas Telah Berakhir";return}
-  cd.innerHTML=`⏳ Deadline: ${Math.floor(diff/86400000)} hari ${Math.floor(diff/3600000)%24} jam ${Math.floor(diff/60000)%60} menit ${Math.floor(diff/1000)%60} detik`;
-},1000);
-
-/* PROTEKSI */
-document.addEventListener("contextmenu",e=>e.preventDefault());
-document.querySelectorAll("img").forEach(img=>img.setAttribute("draggable","false"));
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
