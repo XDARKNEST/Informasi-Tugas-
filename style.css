@@ -19,13 +19,24 @@ body{
   transition:.3s ease;
 }
 
+#particleCanvas{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+}
+
+header, main, footer, .modal{
+  position:relative;
+  z-index:1;
+}
+
 /* HEADER */
 header{
   background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
   color:#fff;
   padding:70px 20px 50px;
   text-align:center;
-  position:relative;
 }
 
 .dark-toggle{
@@ -47,13 +58,7 @@ header{
   padding:14px 22px;
   border-radius:14px;
   font-weight:600;
-  margin-bottom:25px;
-}
-
-.ref-preview img{
-  width:420px;
-  max-width:100%;
-  border-radius:18px;
+  margin:8px;
 }
 
 /* CONTENT */
@@ -134,33 +139,6 @@ header{
 .silver{background:#9ca3af}
 .bronze{background:#d97706}
 
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:40px 20px;
-  color:#6b7280;
-}
-
-.social-section{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:14px;
-}
-
-.social-btn{
-  padding:12px 22px;
-  border-radius:999px;
-  color:#fff;
-  text-decoration:none;
-  font-weight:600;
-}
-
-.instagram{background:#e1306c}
-.tiktok{background:#000}
-.task{background:#16a34a}
-.community{background:#2563eb}
-
 /* MODAL */
 .modal{
   display:none;
@@ -169,6 +147,7 @@ footer{
   background:rgba(0,0,0,.9);
   align-items:center;
   justify-content:center;
+  z-index:10;
 }
 
 .modal img{
