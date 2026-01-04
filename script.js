@@ -20,7 +20,7 @@ document.querySelectorAll(".fullview-btn").forEach(btn=>{
   }
 });
 imageModal.onclick=e=>{
-  if(e.target===imageModal) imageModal.style.display="none";
+  if(e.target===imageModal)imageModal.style.display="none";
 };
 
 /* COUNTDOWN */
@@ -46,8 +46,13 @@ setInterval(()=>{
 /* STAR PARTICLES */
 const canvas=document.getElementById("particleCanvas");
 const ctx=canvas.getContext("2d");
-function resize(){canvas.width=innerWidth;canvas.height=innerHeight}
-resize();addEventListener("resize",resize);
+
+function resize(){
+  canvas.width=innerWidth;
+  canvas.height=innerHeight;
+}
+resize();
+addEventListener("resize",resize);
 
 const stars=[...Array(60)].map(()=>({
   x:Math.random()*canvas.width,
@@ -80,8 +85,8 @@ function drawStar(x,y,r,o){
   stars.forEach(s=>{
     s.x+=s.dx;
     s.y+=s.dy;
-    if(s.x<0||s.x>canvas.width) s.dx*=-1;
-    if(s.y<0||s.y>canvas.height) s.dy*=-1;
+    if(s.x<0||s.x>canvas.width)s.dx*=-1;
+    if(s.y<0||s.y>canvas.height)s.dy*=-1;
     drawStar(s.x,s.y,s.r,s.o);
   });
   requestAnimationFrame(animate);
