@@ -24,24 +24,25 @@ imageModal.onclick=e=>{
 };
 
 /* COUNTDOWN */
-const deadline=new Date("2026-01-20 00:00:00").getTime();
+const deadline = new Date(2026, 0, 4, 0, 0, 0).getTime();
 const nextDeadline = new Date(2026, 0, 11, 8, 0, 0).getTime();
-const cd=document.getElementById("countdown");
-const nextCd=document.getElementById("nextCountdown");
 
-setInterval(()=>{
-  const now=Date.now();
+const cd = document.getElementById("countdown");
+const nextCd = document.getElementById("nextCountdown");
 
-  const d1=deadline-now;
-  cd.innerHTML=d1<=0
-    ?"⛔ Deadline Tugas Telah Berakhir"
-    :`⏳ Deadline: ${Math.floor(d1/86400000)} hari ${Math.floor(d1/3600000)%24} jam ${Math.floor(d1/60000)%60} menit ${Math.floor(d1/1000)%60} detik`;
+setInterval(() => {
+  const now = Date.now();
 
-  const d2=nextDeadline-now;
-  nextCd.innerHTML=d2<=0
-    ?"🎉 Tugas Baru Telah Dibuka!"
-    :`📅 Tugas Selanjutnya: ${Math.floor(d2/86400000)} hari ${Math.floor(d2/3600000)%24} jam ${Math.floor(d2/60000)%60} menit ${Math.floor(d2/1000)%60} detik`;
-},1000);
+  const d1 = deadline - now;
+  cd.innerHTML = d1 <= 0
+    ? "⛔ Deadline Tugas Telah Berakhir"
+    : `⏳ Deadline: ${Math.floor(d1/86400000)} hari ${Math.floor(d1/3600000)%24} jam ${Math.floor(d1/60000)%60} menit ${Math.floor(d1/1000)%60} detik`;
+
+  const d2 = nextDeadline - now;
+  nextCd.innerHTML = d2 <= 0
+    ? "🎉 Tugas Baru Telah Dibuka!"
+    : `📅 Tugas Selanjutnya: ${Math.floor(d2/86400000)} hari ${Math.floor(d2/3600000)%24} jam ${Math.floor(d2/60000)%60} menit ${Math.floor(d2/1000)%60} detik`;
+}, 1000);
 
 /* STAR PARTICLES */
 const canvas=document.getElementById("particleCanvas");
