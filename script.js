@@ -25,7 +25,7 @@ imageModal.onclick=e=>{
 
 /* COUNTDOWN */
 const deadline=new Date("2026-01-04 00:00:00").getTime();
-const nextDeadline=new Date("2026-01-11 08:00:00").getTime();
+const nextDeadline = new Date("2026-01-11T08:00:00+07:00").getTime();
 const cd=document.getElementById("countdown");
 const nextCd=document.getElementById("nextCountdown");
 
