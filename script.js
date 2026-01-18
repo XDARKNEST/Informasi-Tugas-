@@ -41,7 +41,7 @@ const volumeSlider = document.getElementById("volumeSlider");
 
 const playlist = [
   "dj so asu.mp3",
-  "Michishirube.mp3",
+  "dj nggak dulu.mp3",
   "lagu3.mp3"
 ];
 
