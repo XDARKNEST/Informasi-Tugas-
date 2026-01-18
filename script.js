@@ -74,10 +74,15 @@ setInterval(()=>{
     const s=Math.floor(t/1000)%60;
     return `${d} hari ${h} jam ${m} menit ${s} detik`;
   };
-  document.getElementById("countdown").innerHTML=
-    d1<=0?"â›” Deadline Tugas Telah Berakhir":`â³ Deadline: ${format(d1)}`;
-  document.getElementById("nextCountdown").innerHTML=
-    d2<=0?"ðŸŽ‰ Tugas Baru Telah Dibuka!":`ðŸ“… Tugas Selanjutnya: ${format(d2)}`;
+  document.getElementById("countdown").innerHTML =
+  d1 <= 0
+    ? "&#9940; Deadline Tugas Telah Berakhir"
+    : `&#9203; Deadline: ${format(d1)}`;
+
+document.getElementById("nextCountdown").innerHTML =
+  d2 <= 0
+    ? "&#127881; Tugas Baru Telah Dibuka!"
+    : `&#128197; Tugas Selanjutnya: ${format(d2)}`;
 },1000);
 
 /* SECURITY */
