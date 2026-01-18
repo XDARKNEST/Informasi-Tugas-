@@ -40,38 +40,34 @@ const musicBtn = document.getElementById("musicBtn");
 const volumeSlider = document.getElementById("volumeSlider");
 
 const playlist = [
-  "dj nggak dulu.mp3",
-  "dj so asu.mp3",
+  "dj-nggak-dulu.mp3",
+  "dj-so-asu.mp3",
   "lagu3.mp3"
 ];
 
-let currentTrack = localStorage.getItem("track")
-  ? parseInt(localStorage.getItem("track"))
-  : 0;
-
+let currentTrack = parseInt(localStorage.getItem("track")) || 0;
 music.src = playlist[currentTrack];
 
 /* volume */
-music.volume = localStorage.getItem("volume")
-  ? parseFloat(localStorage.getItem("volume"))
-  : 0.5;
+music.volume = parseFloat(localStorage.getItem("volume")) || 0.5;
 volumeSlider.value = music.volume;
 
-/* auto play jika sebelumnya play */
-if (localStorage.getItem("music") === "play") {
-  music.play().catch(()=>{});
-  musicBtn.textContent = "Pause Music";
-}
+/* status awal */
+musicBtn.textContent = "▶ Play Music";
 
-/* tombol play / pause */
-musicBtn.onclick = () => {
+/* play / pause */
+musicBtn.onclick = async () => {
   if (music.paused) {
-    music.play();
-    musicBtn.textContent = "Pause Music";
-    localStorage.setItem("music", "play");
+    try {
+      await music.play();
+      musicBtn.textContent = "⏸ Pause Music";
+      localStorage.setItem("music", "play");
+    } catch (e) {
+      alert("Tap sekali lagi untuk memulai musik 🎵");
+    }
   } else {
     music.pause();
-    musicBtn.textContent = "Play Music";
+    musicBtn.textContent = "▶ Play Music";
     localStorage.setItem("music", "pause");
   }
 };
@@ -82,11 +78,9 @@ volumeSlider.oninput = () => {
   localStorage.setItem("volume", volumeSlider.value);
 };
 
-/* AUTO LANJUT LAGU */
+/* lagu selanjutnya */
 music.addEventListener("ended", () => {
-  currentTrack++;
-  if (currentTrack >= playlist.length) currentTrack = 0;
-
+  currentTrack = (currentTrack + 1) % playlist.length;
   localStorage.setItem("track", currentTrack);
   music.src = playlist[currentTrack];
   music.play();
