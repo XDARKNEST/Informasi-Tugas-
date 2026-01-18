@@ -16,9 +16,9 @@ body{
   font-family:Segoe UI,system-ui,sans-serif;
   background:var(--bg);
   color:var(--text);
-  transition:.3s ease;
 }
 
+/* PARTICLE */
 #particleCanvas{
   position:fixed;
   inset:0;
@@ -26,8 +26,12 @@ body{
   pointer-events:none;
 }
 
-header,main,footer,.modal{position:relative;z-index:1}
+header, main, footer, .modal{
+  position:relative;
+  z-index:1;
+}
 
+/* HEADER */
 header{
   background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
   color:#fff;
@@ -35,17 +39,27 @@ header{
   text-align:center;
 }
 
+header h1{
+  font-size:2.6rem;
+  margin-bottom:10px
+}
+
+header p{
+  opacity:.95;
+  margin-bottom:15px
+}
+
 .dark-toggle{
   position:absolute;
   top:20px;
   right:20px;
-  padding:10px 16px;
-  border-radius:999px;
-  border:none;
   background:rgba(255,255,255,.15);
   color:#fff;
-  font-weight:600;
+  border:none;
+  padding:10px 16px;
+  border-radius:999px;
   cursor:pointer;
+  font-weight:600;
 }
 
 .countdown{
@@ -53,6 +67,7 @@ header{
   background:rgba(0,0,0,.35);
   padding:14px 22px;
   border-radius:14px;
+  font-weight:600;
   margin:8px;
 }
 
@@ -62,6 +77,39 @@ header{
   border-radius:18px;
 }
 
+/* MUSIC PLAYER */
+.music-player{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  z-index:6;
+  background:rgba(79,70,229,.9);
+  color:#fff;
+  padding:12px 18px;
+  border-radius:999px;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:600;
+}
+
+.music-player button{
+  background:#fff;
+  color:#4f46e5;
+  border:none;
+  padding:6px 14px;
+  border-radius:999px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.music-player input[type="range"]{
+  width:80px;
+  cursor:pointer;
+}
+
+/* CONTENT */
 .container{
   max-width:1200px;
   margin:20px auto 60px;
@@ -134,9 +182,18 @@ header{
   font-weight:600;
 }
 
-.gold{background:#facc15;color:#1f2937}
-.silver{background:#9ca3af}
-.bronze{background:#d97706}
+.gold{
+  background:#facc15;
+  color:#1f2937
+}
+
+.silver{
+  background:#9ca3af
+}
+
+.bronze{
+  background:#d97706
+}
 
 footer{
   text-align:center;
@@ -144,6 +201,7 @@ footer{
   color:#6b7280;
 }
 
+/* MODAL */
 .modal{
   display:none;
   position:fixed;
@@ -160,18 +218,35 @@ footer{
   border-radius:18px;
 }
 
-.close{
-  position:absolute;
-  top:30px;
-  right:40px;
-  font-size:40px;
-  color:#fff;
-  cursor:pointer;
-}
-
+/* DARK MODE */
 body.dark{
   --bg:#0b0b12;
   --card:#141422;
   --text:#e5e7eb;
   --muted:#9ca3af;
+}
+
+/* ============================= */
+/* ALBUM APRESIASI MEMBER (BARU) */
+/* ============================= */
+
+.album{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(90px,1fr));
+  gap:14px;
+}
+
+.album-img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:14px;
+  cursor:pointer;
+  transition:.25s ease;
+  box-shadow:0 6px 14px rgba(0,0,0,.15);
+}
+
+.album-img:hover{
+  transform:scale(1.08);
+  box-shadow:0 12px 24px rgba(0,0,0,.25);
 }
