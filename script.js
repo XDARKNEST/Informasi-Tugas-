@@ -34,57 +34,31 @@ modal.onclick=e=>{
   if(e.target===modal) modal.style.display="none";
 };
 
-/* MUSIC PLAYLIST */
-const music = document.getElementById("bgMusic");
-const musicBtn = document.getElementById("musicBtn");
-const volumeSlider = document.getElementById("volumeSlider");
-
-const playlist = [
-  "dj-nggak-dulu.mp3",
-  "dj-so-asu.mp3",
-  "lagu3.mp3"
-];
-
-let currentTrack = parseInt(localStorage.getItem("track")) || 0;
-music.src = playlist[currentTrack];
-
-/* volume */
-music.volume = parseFloat(localStorage.getItem("volume")) || 0.5;
-volumeSlider.value = music.volume;
-
-/* status awal */
-musicBtn.textContent = "▶ Play Music";
-
-/* play / pause */
-musicBtn.onclick = async () => {
-  if (music.paused) {
-    try {
-      await music.play();
-      musicBtn.textContent = "⏸ Pause Music";
-      localStorage.setItem("music", "play");
-    } catch (e) {
-      alert("Tap sekali lagi untuk memulai musik 🎵");
-    }
-  } else {
+/* MUSIC */
+const music=document.getElementById("bgMusic");
+const musicBtn=document.getElementById("musicBtn");
+const volumeSlider=document.getElementById("volumeSlider");
+music.volume=localStorage.getItem("volume")?parseFloat(localStorage.getItem("volume")):0.5;
+volumeSlider.value=music.volume;
+if(localStorage.getItem("music")==="play"){
+  music.play().catch(()=>{});
+  musicBtn.textContent="Pause Music";
+}
+musicBtn.onclick=()=>{
+  if(music.paused){
+    music.play();
+    musicBtn.textContent="Pause Music";
+    localStorage.setItem("music","play");
+  }else{
     music.pause();
-    musicBtn.textContent = "▶ Play Music";
-    localStorage.setItem("music", "pause");
+    musicBtn.textContent="Play Music";
+    localStorage.setItem("music","pause");
   }
 };
-
-/* volume slider */
-volumeSlider.oninput = () => {
-  music.volume = volumeSlider.value;
-  localStorage.setItem("volume", volumeSlider.value);
+volumeSlider.oninput=()=>{
+  music.volume=volumeSlider.value;
+  localStorage.setItem("volume",volumeSlider.value);
 };
-
-/* lagu selanjutnya */
-music.addEventListener("ended", () => {
-  currentTrack = (currentTrack + 1) % playlist.length;
-  localStorage.setItem("track", currentTrack);
-  music.src = playlist[currentTrack];
-  music.play();
-});
 
 /* COUNTDOWN */
 const deadline = new Date(2026, 0, 18, 12, 0, 0).getTime();
@@ -101,9 +75,9 @@ setInterval(()=>{
     return `${d} hari ${h} jam ${m} menit ${s} detik`;
   };
   document.getElementById("countdown").innerHTML=
-    d1<=0?"⛔ Deadline Tugas Telah Berakhir":`⏳ Deadline: ${format(d1)}`;
+    d1<=0?"â›” Deadline Tugas Telah Berakhir":`â³ Deadline: ${format(d1)}`;
   document.getElementById("nextCountdown").innerHTML=
-    d2<=0?"🎉 Tugas Baru Telah Dibuka!":`📅 Tugas Selanjutnya: ${format(d2)}`;
+    d2<=0?"ðŸŽ‰ Tugas Baru Telah Dibuka!":`ðŸ“… Tugas Selanjutnya: ${format(d2)}`;
 },1000);
 
 /* SECURITY */
