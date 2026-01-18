@@ -40,8 +40,8 @@ const musicBtn = document.getElementById("musicBtn");
 const volumeSlider = document.getElementById("volumeSlider");
 
 const playlist = [
-  "dj so asu.mp3",
   "dj nggak dulu.mp3",
+  "dj so asu.mp3",
   "lagu3.mp3"
 ];
 
