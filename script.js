@@ -61,7 +61,7 @@ volumeSlider.oninput=()=>{
 };
 
 /* COUNTDOWN */
-const deadline = new Date(2026, 2, 22, 12, 0, 0).getTime();
+const deadline = new Date(2026, 3, 22, 28, 0, 0).getTime();
 const nextDeadline = new Date(2026, 1, 8, 8, 0, 0).getTime();
 setInterval(()=>{
   const now=Date.now();
